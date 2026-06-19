@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐鱼体育 · 一个值得了解的站点</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e293b;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+
+    .page-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* 开场卡片 */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(203, 213, 225, 0.4);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .hero-card:hover {
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero-short {
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      color: #475569;
+      border-left: 4px solid #94a3b8;
+      padding-left: 1.2rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #0f172a;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #64748b;
+      max-width: 70%;
+    }
+
+    /* 承接段落卡片 */
+    .story-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.5rem 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e9edf2;
+    }
+
+    .story-section p {
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+    }
+
+    .story-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .story-link-sentence {
+      font-size: 1.05rem;
+      color: #1e293b;
+      margin-top: 0.8rem;
+      background: #f8fafc;
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+      border: 1px solid #e2e8f0;
+    }
+
+    .story-link-sentence a {
+      color: #1e40af;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #94a3b8;
+      transition: border-color 0.15s;
+    }
+
+    .story-link-sentence a:hover {
+      border-bottom-color: #1e40af;
+    }
+
+    /* 特点卡片组 */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eaedf2;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 0.75rem;
+      color: #64748b;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #0f172a;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    /* 温和结尾 */
+    .closing-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.5rem 2.5rem;
+      margin-top: 2rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+      text-align: center;
+    }
+
+    .closing-section p {
+      max-width: 600px;
+      margin: 0 auto 1rem;
+      color: #475569;
+      font-size: 1rem;
+    }
+
+    .closing-tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+      border-top: 1px solid #e9edf2;
+      padding-top: 1rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem 0.75rem;
+      }
+
+      .hero-card {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-sub {
+        max-width: 100%;
+        font-size: 0.95rem;
+      }
+
+      .story-section {
+        padding: 2rem 1.5rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .closing-section {
+        padding: 2rem 1.5rem;
+      }
+
+      .story-link-sentence {
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero-card {
+        padding: 1.5rem 1rem;
+      }
+
+      .hero-short {
+        font-size: 1rem;
+        padding-left: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- 开场短句 -->
+    <div class="hero-card">
+      <div class="hero-short">
+        有些站点，值得你慢慢了解。
+      </div>
+      <h1 class="hero-title">
+        关于乐鱼体育
+      </h1>
+      <div class="hero-sub">
+        一个从信息聚合到内容呈现都力求清晰的平台，没有浮夸的承诺，只有持续运转的日常。
+      </div>
+    </div>
+
+    <!-- 承接段落：站点介绍与可信说明 -->
+    <div class="story-section">
+      <p>
+        如果你正在寻找一个结构清晰、更新稳定的体育信息站点，或许可以花几分钟看看这里。 
+        <a href="https://official-portal-leyu.com.cn" style="color:#1e40af; text-decoration:none; font-weight:500; border-bottom:1px dashed #94a3b8;">乐鱼体育</a> 
+        的定位并不是追逐热点，而是尽可能让访问者获得有条理的资讯和内容导航。从赛事动态到基础数据，页面布局保持了统一的节奏，没有过多干扰元素。
+      </p>
+      <p>
+        运营一个站点，最重要的一环是持续维护与内容可信度。在长期观察中，这个站点在信息时效性上保持着稳定的更新频率，同时界面设计更倾向于功能优先——简洁、不堆砌、减少视觉噪音。对于希望快速定位内容的用户来说，这种克制反而带来了更好的浏览体验。
+      </p>
+      <p>
+        当然，每个站点都有自己的成长轨迹。没有哪个平台能覆盖所有需求，但如果你偏爱那种不慌不忙、注重基础体验的呈现方式，这里或许会让你觉得舒服。
+      </p>
+      <div class="story-link-sentence">
+        你可以直接访问 <a href="https://official-portal-leyu.com.cn">乐鱼体育</a>，看看它目前的样貌和内容组织方式。
+      </div>
+    </div>
+
+    <!-- 特点列表 -->
+    <div class="story-section" style="padding-bottom: 2rem;">
+      <h2 style="font-weight:400; font-size:1.5rem; margin-bottom:0.5rem; color:#0f172a; letter-spacing:-0.01em;">几个值得留意的特点</h2>
+      <p style="color:#64748B; margin-bottom:1.8rem; font-size:0.95rem;">并非面面俱到，但都是实际使用中的直观感受。</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">◈</span>
+          <h3>信息层级清晰</h3>
+          <p>从导航到内容区块，分类明确，没有复杂跳转，适合快速浏览。</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">◈</span>
+          <h3>视觉风格克制</h3>
+          <p>低饱和度配色，浅灰背景搭配细边框，长时间阅读也不容易疲劳。</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">◈</span>
+          <h3>保持更新节奏</h3>
+          <p>内容维护稳定，没有长期搁置的栏目，信息时效性有基本保障。</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">◈</span>
+          <h3>访问反馈迅速</h3>
+          <p>页面加载与交互反馈比较轻快，没有冗余脚本拖慢体验。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="closing-section">
+      <p>
+        在信息过载的时代，一个安静、有条理的站点反而成了稀缺品。如果你愿意花几分钟浏览一下 
+        <a href="https://official-portal-leyu.com.cn" style="color:#1e40af; text-decoration:none; font-weight:500;">乐鱼体育</a>， 
+        也许会发现它正好符合你对“刚刚好”的期待。
+      </p>
+      <p style="font-size:0.95rem; color:#64748B; margin-top:0.8rem;">
+        没有喧哗，只有内容本身的轮廓。
+      </p>
+      <div class="closing-tag">
+        —— 关于一个站点的朴素记录
+      </div>
+    </div>
+  </div>
+</body>
+</html>
