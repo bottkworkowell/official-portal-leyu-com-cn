@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK体育 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eaf7f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      color: #1f2b2a;
+      line-height: 1.6;
+      padding: 24px 16px;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: #fffffff2;
+      backdrop-filter: blur(2px);
+      border-radius: 40px 40px 28px 28px;
+      box-shadow: 0 8px 30px rgba(38, 89, 84, 0.08);
+      overflow: hidden;
+      padding: 32px 28px 40px;
+    }
+
+    /* 网格卡片风格 */
+    .hero-tag {
+      display: inline-block;
+      background: #2d7d74;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      padding: 4px 14px;
+      border-radius: 40px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #16403b;
+      margin-bottom: 12px;
+    }
+
+    .subhead {
+      font-size: 1.05rem;
+      color: #3e5c58;
+      max-width: 640px;
+      margin-bottom: 40px;
+      border-left: 4px solid #45a69a;
+      padding-left: 18px;
+      background: #ecf7f4;
+      border-radius: 0 12px 12px 0;
+      line-height: 1.7;
+    }
+
+    .subhead a {
+      color: #0f6b60;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #b3d9d2;
+      transition: border-color 0.2s;
+    }
+
+    .subhead a:hover {
+      border-bottom-color: #0f6b60;
+    }
+
+    /* 网格卡片区 — 目录感 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+      margin: 44px 0 40px;
+    }
+
+    .grid-card {
+      background: #f5fcfb;
+      border-radius: 24px;
+      padding: 24px 20px 20px;
+      box-shadow: 0 4px 12px rgba(42, 95, 89, 0.06);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      border: 1px solid #d6ece6;
+    }
+
+    .grid-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(36, 87, 80, 0.10);
+      border-color: #b8ddd4;
+    }
+
+    .grid-card .card-icon {
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .grid-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #185149;
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+    }
+
+    .grid-card p {
+      font-size: 0.95rem;
+      color: #2b4b46;
+      margin-bottom: 8px;
+    }
+
+    .grid-card .tag {
+      display: inline-block;
+      background: #d1ebe4;
+      color: #19574d;
+      border-radius: 24px;
+      font-size: 0.75rem;
+      padding: 2px 12px;
+      font-weight: 500;
+      margin-top: 6px;
+    }
+
+    /* 提示区 + 相关信息区 双栏 */
+    .info-twin {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin: 48px 0 28px;
+    }
+
+    .info-block {
+      flex: 1 1 280px;
+      background: #f4fbf9;
+      border-radius: 28px;
+      padding: 24px 24px 28px;
+      border: 1px solid #cde3dd;
+    }
+
+    .info-block h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #17544a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .info-block ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-block li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #1d3d38;
+    }
+
+    .info-block li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #359e8f;
+      font-size: 1.1rem;
+    }
+
+    .info-block .remark {
+      background: white;
+      border-radius: 18px;
+      padding: 14px 18px;
+      margin-top: 14px;
+      font-size: 0.9rem;
+      border-left: 4px solid #359e8f;
+      color: #1e4941;
+    }
+
+    .faq-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+      margin: 44px 0 24px;
+      padding: 24px 0 12px;
+      border-top: 2px dashed #c7e0d9;
+    }
+
+    .faq-item {
+      break-inside: avoid;
+    }
+
+    .faq-item summary {
+      font-weight: 600;
+      color: #19584e;
+      cursor: default;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item p {
+      font-size: 0.88rem;
+      color: #2f5550;
+      padding-left: 4px;
+      border-left: 2px solid #b3d8d0;
+      padding-left: 12px;
+    }
+
+    .bottom-note {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid #d1e7e1;
+      font-size: 0.9rem;
+      color: #3a625b;
+    }
+
+    .bottom-note a {
+      color: #0f6b60;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #bcd9d2;
+    }
+
+    .bottom-note a:hover {
+      border-bottom-color: #0f6b60;
+    }
+
+    .small-print {
+      text-align: right;
+      font-size: 0.75rem;
+      color: #729e95;
+      margin-top: 24px;
+    }
+
+    /* 移动端细节 */
+    @media (max-width: 600px) {
+      body {
+        padding: 12px 10px;
+      }
+      .page {
+        padding: 22px 16px 32px;
+        border-radius: 28px;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+      .subhead {
+        font-size: 0.95rem;
+        padding-left: 14px;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .faq-mini {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .info-twin {
+        flex-direction: column;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <span class="hero-tag">📘 知识库 · 起点</span>
+    <h1>再次遇见 &middot; 持续关注</h1>
+    <div class="subhead">
+      这里是关于 <a href="https://hq-mksports.com">MK体育</a> 的一处安静入口。无论你是旧访客还是新朋友，都可以从这里重新连接受关注的资讯与内容。<br>
+      我们相信，真正有价值的信息值得被反复浏览、收藏，并在需要时轻松找到。
+    </div>
+
+    <!-- 卡片网格：目录感布局 -->
+    <div class="card-grid">
+      <div class="grid-card">
+        <span class="card-icon">📌</span>
+        <h3>内容索引</h3>
+        <p>赛事动态、项目介绍、常见问题…… 信息按主题分类，便于反复查阅。</p>
+        <span class="tag">目录</span>
+      </div>
+      <div class="grid-card">
+        <span class="card-icon">🔖</span>
+        <h3>收藏与回访</h3>
+        <p>把这里加入书签，下次回来依然保持一致的呈现，不丢失上下文。</p>
+        <span class="tag">持续</span>
+      </div>
+      <div class="grid-card">
+        <span class="card-icon">🧭</span>
+        <h3>关注动态</h3>
+        <p>不追求快速跳转，更希望你能停留片刻，了解背后结构与逻辑。</p>
+        <span class="tag">节奏</span>
+      </div>
+      <div class="grid-card">
+        <span class="card-icon">📋</span>
+        <h3>使用说明</h3>
+        <p>每个区域都有其功能，把页面当作一张信息地图来探索。</p>
+        <span class="tag">指引</span>
+      </div>
+    </div>
+
+    <!-- 双区块：提示 + 相关信息 -->
+    <div class="info-twin">
+      <div class="info-block">
+        <h4>💡 提示区</h4>
+        <ul>
+          <li>若你之前访问过 <a href="https://hq-mksports.com" style="color:#0f6b60;text-decoration:underline;text-underline-offset:3px;">MK体育</a> 相关内容，此页可作为重新连接的参考节点。</li>
+          <li>所有链接均指向同一位置，不必担心迷路 —— 你随时可以从这里开始。</li>
+          <li>建议使用浏览器书签功能收藏本页，便于日后再次查阅。</li>
+        </ul>
+        <div class="remark">
+          ⏳ 保持耐心，信息需要时间消化。频繁刷新不如专注阅读。
+        </div>
+      </div>
+      <div class="info-block">
+        <h4>📎 相关信息</h4>
+        <ul>
+          <li>页面结构采用网格卡片与分区布局，适合目录式浏览。</li>
+          <li>FAQ 摘要可以快速了解常见疑问，无需额外搜索。</li>
+          <li>内容方向围绕再次访问与持续关注展开，不追求一次性灌输。</li>
+        </ul>
+        <div class="remark">
+          🧩 任何入口都只是开始。我们更在意你离开时带走了什么。
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+      <div class="faq-item">
+        <summary>❓ 为什么要再次访问这个页面？</summary>
+        <p>因为信息会变化，但入口不变。你可以把它当作一个稳定的基点，随时回来检查更新，或者重温之前的内容。</p>
+      </div>
+      <div class="faq-item">
+        <summary>❓ 如何确认这是我要找的地方？</summary>
+        <p>页面的核心链接指向 <a href="https://hq-mksports.com" style="color:#0f6b60;text-decoration:underline;text-underline-offset:2px;">MK体育</a> ，并且内容主题围绕体育知识与关注点展开，不会偏离。</p>
+      </div>
+      <div class="faq-item">
+        <summary>❓ 移动端阅读体验如何？</summary>
+        <p>页面已适配手机与平板，卡片自动调整列数，字体大小、间距均针对小屏幕优化，阅读流畅。</p>
+      </div>
+      <div class="faq-item">
+        <summary>❓ 页面会频繁改动吗？</summary>
+        <p>结构保持稳定，内容会根据需要做补充。每次变化都会保留核心定位：入口、目录、提示。</p>
+      </div>
+    </div>
+
+    <div class="bottom-note">
+      ↻ 你可以随时回来 —— 这个页面为你保留了再次访问的路径。<br>
+      主要链接指向 <a href="https://hq-mksports.com">MK体育</a> ，除此以外没有多余的跳转。
+    </div>
+
+    <div class="small-print">
+      页面方向 · 知识库入口式
+    </div>
+  </div>
+</body>
+</html>
